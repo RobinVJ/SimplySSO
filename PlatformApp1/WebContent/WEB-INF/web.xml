@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="PlatformApp1" version="3.0">
+	<display-name>PlatformApp1</display-name>
+	<context-param>
+		<param-name>SESSION_COOKIE</param-name>
+		<param-value>AUTH_JSESSIONID</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>PLATFORM_APP</param-name>
+		<param-value>AuthPlatform</param-value>
+	</context-param>
+
+
+	<context-param>
+		<param-name>PLATFORM_LOGOUT_SERVICE</param-name>
+		<param-value>/logout.do</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PLATFORM_LOGIN_SERVICE</param-name>
+		<param-value>/login.jsp</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PLATFORM_VERIFY_URL</param-name>
+		<param-value>http://localhost:8080/AuthPlatform/verify.do</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>SessionStartUpServlet</servlet-name>
+		<servlet-class>com.robin.app.web.SessionStartUpServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SessionStartUpServlet</servlet-name>
+		<url-pattern>/appLogin.do</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>SessionTerminateServlet</servlet-name>
+		<servlet-class>com.robin.app.web.SessionTerminateServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SessionTerminateServlet</servlet-name>
+		<url-pattern>/appLogout.do</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>SessionRefreshServlet</servlet-name>
+		<servlet-class>com.robin.app.web.SessionRefreshServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SessionRefreshServlet</servlet-name>
+		<url-pattern>/refresh.do</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>AuthorizationFilter</filter-name>
+		<filter-class>com.robin.app.web.AuthorizationCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthorizationFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

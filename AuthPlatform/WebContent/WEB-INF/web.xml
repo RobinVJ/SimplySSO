@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="AuthPlatForm" version="3.0">
+	<display-name>AuthPlatForm</display-name>
+	
+	<listener>
+		<listener-class>com.robin.sso.api.support.http.TimeOutTracker</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.robin.sso.api.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>com.robin.sso.api.LogoutServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/logout.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Refresh</servlet-name>
+		<servlet-class>com.robin.sso.api.RefreshServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Refresh</servlet-name>
+		<url-pattern>/refresh.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Verify</servlet-name>
+		<servlet-class>com.robin.sso.api.VerifyServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Verify</servlet-name>
+		<url-pattern>/verify.do</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<session-config>
+		<session-timeout>3</session-timeout>
+		<cookie-config>
+			<name>AUTH_JSESSIONID</name>
+			<path>/</path>
+		</cookie-config>
+	</session-config>
+</web-app>

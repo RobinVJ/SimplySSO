@@ -1,0 +1,3 @@
+<a href="#" id= "logoutA" onclick="executeLogout('appLogout.do')"> Logout</a>
+		
+<script type="text/javascript" src="logout.js"></script>
